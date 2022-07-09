@@ -22,7 +22,4 @@ class ChatsController < ApplicationController
 
   private
 
-  def chats_params
-
-  end
 end

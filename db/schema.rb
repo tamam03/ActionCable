@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_08_043324) do
+ActiveRecord::Schema.define(version: 2022_07_05_030242) do
 
   create_table "chats", force: :cascade do |t|
     t.integer "user_id"
@@ -18,6 +18,21 @@ ActiveRecord::Schema.define(version: 2022_06_08_043324) do
     t.text "sentence"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tests", force: :cascade do |t|
+    t.integer "visitor_id", null: false
+    t.integer "visited_id", null: false
+    t.integer "post_id"
+    t.integer "comment_id"
+    t.string "action", default: "", null: false
+    t.boolean "checked", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index "\"item_id\"", name: "index_tests_on_item_id"
+    t.index ["comment_id"], name: "index_tests_on_comment_id"
+    t.index ["visited_id"], name: "index_tests_on_visited_id"
+    t.index ["visitor_id"], name: "index_tests_on_visitor_id"
   end
 
   create_table "users", force: :cascade do |t|
